@@ -12,7 +12,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "cj-vprofile-s3-storage"
+    bucket = "aws-eks-karpenter-tfstate"
     key    = "terraform.karpenter-tfstate"
     region = "us-east-1"
   }
