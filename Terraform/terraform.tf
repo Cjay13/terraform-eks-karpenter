@@ -11,13 +11,13 @@ terraform {
     }
   }
 
-  provider "aws" {
-    region = "us-east-1"
-  }
-
   backend "s3" {
     bucket = "cj-vprofile-s3-storage"
     key    = "terraform.karpenter-tfstate"
     region = "us-east-1"
   }
+}
+
+provider "aws" {
+  region = "us-east-1"
 }
