@@ -1,14 +1,20 @@
-data "aws_ami" "bottlerocket_ami" {
-  most_recent = true
-  name_regex = "bottlerocket-aws-k8s-\\d+-x86_64-*"
+data "aws_ssm_parameter" "bottle_rocket_image_id" {
+  name = "/aws/service/bottlerocket/aws-k8s-${var.eks-version}/x86_64/latest/image_id"
+}
 
+data "aws_ami" "bottlerocket_ami" {
+  owners = ["amazon"]
+  filter {
+    name = "image_id"
+    values = [data.aws_ssm_parameter.bottle_rocket_image_id.value]
+  }
 }
 
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
 
-  cluster_name = "var.cluster_name"
-  cluster_version = "1.31"
+  cluster_name = var.cluster_name
+  cluster_version = var.eks-version
 
   cluster_addons = {
     coredns = {}
@@ -27,13 +33,11 @@ module "eks" {
   eks_managed_node_groups = {
     ng1 = {
       ami_type = data.aws_ami.bottlerocket_ami.id
-      instance_type = ["t3.small"]
+      instance_type = var.instance_size
 
-      min_size = 2
-      max_size = 3
-      desired_size = 2
+      min_size = var.max_size
+      max_size = var.max_size
+      desired_size = var.desired_size
     }
   }
-
-
 }
