@@ -35,7 +35,7 @@ module "eks" {
       ami_id = data.aws_ami.bottlerocket_ami.id
       instance_type = var.instance_size
 
-      min_size = var.max_size
+      min_size = var.min_size
       max_size = var.max_size
       desired_size = var.desired_size
     }
