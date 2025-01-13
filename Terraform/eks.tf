@@ -5,7 +5,7 @@ data "aws_ssm_parameter" "bottle_rocket_image_id" {
 data "aws_ami" "bottlerocket_ami" {
   owners = ["amazon"]
   filter {
-    name = "image_id"
+    name = "image-id"
     values = [data.aws_ssm_parameter.bottle_rocket_image_id.value]
   }
 }
