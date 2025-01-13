@@ -32,7 +32,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     ng1 = {
-      ami_type = data.aws_ami.bottlerocket_ami.name
+      ami_id = data.aws_ami.bottlerocket_ami.id
       instance_type = var.instance_size
 
       min_size = var.max_size
