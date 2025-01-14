@@ -2,13 +2,13 @@ data "aws_ssm_parameter" "bottle_rocket_image_id" {
   name = "/aws/service/bottlerocket/aws-k8s-${var.eks-version}/x86_64/latest/image_id"
 }
 
-data "aws_ami" "bottlerocket_ami" {
-  owners = ["amazon"]
-  filter {
-    name = "image-id"
-    values = [data.aws_ssm_parameter.bottle_rocket_image_id.value]
-  }
-}
+# data "aws_ami" "bottlerocket_ami" {
+#   owners = ["amazon"]
+#   filter {
+#     name = "image-id"
+#     values = [data.aws_ssm_parameter.bottle_rocket_image_id.value]
+#   }
+# }
 
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
