@@ -32,8 +32,6 @@ module "eks" {
 
   eks_managed_node_groups = {
     ng1 = {
-      create_launch_template = false
-      launch_template = ""
       ami_type = "BOTTLEROCKET_x86_64"
       platform = "bottlerocket"
       instance_type = var.instance_size
