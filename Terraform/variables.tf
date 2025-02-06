@@ -22,20 +22,20 @@ variable "instance_size" {
 variable "min_size" {
   type = number
   description = "Minimum number of required nodes"
-  default = 1
+  default = 2
 }
 
 
 variable "max_size" {
   type = number
   description = "Maximum number of required nodes"
-  default = 2
+  default = 4
 }
 
 
 variable "desired_size" {
   type = number
   description = "Desired number of required nodes"
-  default = 1
+  default = 2
 }
 
