@@ -36,6 +36,6 @@ variable "max_size" {
 variable "desired_size" {
   type = number
   description = "Desired number of required nodes"
-  default = 2
+  default = 4
 }
 
