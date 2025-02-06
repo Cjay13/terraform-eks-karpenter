@@ -43,12 +43,12 @@ resource "kubectl_manifest" "karpenter-node-pool" {
     apiVersion: karpenter.sh/v1beta1
     kind: Nodepool
     metadata:
-      name: default-nodePool
+      name: defaultNodePool
     spec:
       template:
         spec:
           nodeClassRef:
-            name: default-nodeClass
+            name: defaultNodeClass
           requirements:
             - key: "karpenter.k8s.aws/instance-category"
               operator: In
@@ -80,7 +80,7 @@ resource "kubectl_manifest" "karpenter_node_class" {
     apiVersion: karpenter.k8s.aws/v1beta1
     kind: EC2NodeClass
     metadata:
-      name: default-nodeClass
+      name: defaultNodeClass
     spec:
       amiFamily: Bottlerocket
       role: ${module.karpenter.node_iam_role_name}
