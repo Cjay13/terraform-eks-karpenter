@@ -27,10 +27,10 @@ resource "helm_release" "karpenter" {
     <<-EOT
     serviceAccount:
       name: ${module.karpenter.service_account}
-      settings:
-        clusterName: ${module.eks.cluster_name}
-        clusterEndpoint: ${module.eks.cluster_endpoint}
-        interruptionQueue: ${module.karpenter.queue_name}
+    settings:
+      clusterName: ${module.eks.cluster_name}
+      clusterEndpoint: ${module.eks.cluster_endpoint}
+      interruptionQueue: ${module.karpenter.queue_name}
     EOT
   ]
 
