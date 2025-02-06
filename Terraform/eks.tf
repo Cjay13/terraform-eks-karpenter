@@ -36,9 +36,9 @@ module "eks" {
       platform = "bottlerocket"
       instance_type = var.instance_size
 
-      min_size = var.min_size
-      max_size = var.max_size
-      desired_size = var.desired_size
+      min_size = 2
+      max_size = 4
+      desired_size = 2
     }
   }
 
