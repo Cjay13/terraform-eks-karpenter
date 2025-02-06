@@ -41,7 +41,7 @@ resource "helm_release" "karpenter" {
 resource "kubectl_manifest" "karpenter-node-pool" {
   yaml_body = <<-YAML
     apiVersion: karpenter.sh/v1beta1
-    kind: Nodepool
+    kind: NodePool
     metadata:
       name: default-node-pool
     spec:
