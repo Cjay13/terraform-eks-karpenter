@@ -41,4 +41,8 @@ module "eks" {
       desired_size = var.desired_size
     }
   }
+
+  node_security_group_tags = {
+    "karpenter.sh/discovery" = var.cluster_name
+  }
 }
