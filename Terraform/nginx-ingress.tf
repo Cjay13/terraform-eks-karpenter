@@ -9,4 +9,8 @@ resource "helm_release" "nginx-ingress-controller" {
         name  = "controller.service.type"
         value = "LoadBalancer"
     }
+
+    depends_on = [
+    helm_release.karpenter
+  ]
 }
