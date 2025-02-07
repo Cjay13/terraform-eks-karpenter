@@ -30,3 +30,41 @@ resource "helm_release" "elasticsearch" {
 
 #Kibana installation
 
+resource "helm_release" "kibana" {
+  name = "kibana"
+  repository = "https://helm.elastic.co"
+  chart = "kibana"
+  namespace = "logging"
+  create_namespace = true
+
+  set {
+    name  = "service.type"
+    value = "ClusterIP"
+  }
+
+  set {
+    name  = "ingress.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "ingress.className"
+    value = "nginx"
+  }
+
+  set {
+    name  = "ingress.hosts[0].host"
+    value = "a99ec9b4fd7d343d5affcd04c0bcf83f-1046850647.us-east-1.elb.amazonaws.com"
+  }
+
+  set {
+    name  = "ingress.hosts[0].paths[0].path"
+    value = "/kibana"
+  }
+
+  set {
+    name  = "ingress.hosts[0].paths[0].pathType"
+    value = "ImplementationSpecific"
+  }
+}
+
