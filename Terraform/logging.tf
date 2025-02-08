@@ -24,7 +24,7 @@ resource "helm_release" "elasticsearch" {
 
   set {
     name  = "minimumMasterNodes"
-    value = "Null"
+    value = "1"
   }
 
   set {
@@ -32,10 +32,6 @@ resource "helm_release" "elasticsearch" {
     value = "false"
   }
 
-  set {
-    name = "esConfig.discovery.type"
-    value = "single-node"
-  }
 }
 
 #Kibana installation
