@@ -1,7 +1,7 @@
 #Fluentbit installtion
 
 resource "helm_release" "fluentbit" {
-    name = "fluent_bit"
+    name = "fluentbit"
     repository = "https://fluent.github.io/helm-charts"
     chart = "fluent-bit"
     namespace = "logging"
