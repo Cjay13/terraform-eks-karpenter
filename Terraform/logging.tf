@@ -24,12 +24,17 @@ resource "helm_release" "elasticsearch" {
 
   set {
     name  = "minimumMasterNodes"
-    value = "1"  # Minimum number of master nodes required to avoid split-brain issues
+    value = "Null"
   }
 
   set {
     name = "persistence.enabled"
     value = "false"
+  }
+
+  set {
+    name = "esConfig.discovery.type"
+    value = "single-node"
   }
 }
 
