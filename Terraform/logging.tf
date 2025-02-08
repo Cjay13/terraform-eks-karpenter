@@ -26,6 +26,11 @@ resource "helm_release" "elasticsearch" {
     name  = "minimumMasterNodes"
     value = "1"  # Minimum number of master nodes required to avoid split-brain issues
   }
+
+  set {
+    name = "persistence.enabled"
+    value = "false"
+  }
 }
 
 #Kibana installation
